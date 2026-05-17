@@ -53,18 +53,37 @@ the more loot they give when you kill them. Every morning server analyzes condit
 and calculates their growth rate based on several conditions. 
 
 * keep them healthy: animals with health lower than 60% do not grow at all, the closer their health is to 100%, the faster their growth is 
-* (coming soon!) give them space: too crowded pastures prevent animals from being happy and growing
+* give them space: too crowded pastures prevent animals from being happy and growing
+* avoid unhealthy conditions, as animals may loose weight and even do not drop anything when they are too thin 
+* check animals condition by right-clicking on it
 * (coming soon!) provide them with water: animals with direct access to water grow faster
 * (coming soon!) give them food: animals with direct access to hay grow faster
 * (coming soon!) animals on grass are happier and grow faster
 
 Also planned:
+
 * adjust number of eggs, wool and milk based on animals happiness and weight
 * animals that are too old do not provide products at all
+* increase growth rate when farmer villager is near by
+
 
 **Credits**
 
 Plugin idea taken from discussion on Reddit - [Animal Weights](https://www.reddit.com/r/Minecraft/comments/1te0m69/animal_weights_a_simple_mechanic_to_encourage/)
+
+### Changelog
+
+**v0.3.0 (17th May 2026)**
+
+* weight gain/reduction depends on health and congestion around the animal
+* bad conditions/environment (too crowded, too low health) and animal may loose weight
+* too thin/skinny (below 1000) animals do not drop any loot 
+
+**v0.2.0 (16th May 2026)**
+
+* initial version of plugin, weight gain depends only on health 
+* check condition of animal by right-clicking on it
+
 
 <!-- GETTING STARTED -->
 ### Using the plugin

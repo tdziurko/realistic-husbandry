@@ -21,15 +21,14 @@ public class LootAdjusterForSlaughteredHusbandryAnimals extends AbstractRealisti
         if (entitySupportsRealisticHusbandry(event.getEntity(), killer)) {
 
             int weight = getUtils().getWeight(event.getEntity());
-            if (weight > 0) {
+            if (weight >= getConfig().getInitialAnimalWeight()) {
                 for (ItemStack drop : event.getDrops()) {
                     double dropMultiplied = (double) weight /getConfig().getInitialAnimalWeight();
-                    String killerName = killer != null ? killer.getName() : "Environment";
-                    getLogger().info("Loot multiplier for animal killed by " + killerName + ": " + dropMultiplied);
                     drop.setAmount((int) (drop.getAmount() * dropMultiplied));
                 }
+            } else {
+                event.getDrops().clear();
             }
-
         }
     }
 

@@ -19,9 +19,8 @@ public class RealisticHusbandryPlugin extends JavaPlugin {
     @Override
     public void onEnable() {
         configuration = new RealisticHusbandryConfiguration();
-        utils = new HusbandryAnimalUtils(configuration);
+        utils = new HusbandryAnimalUtils(configuration, getLogger());
         getLogger().info("Configuration values: " + configuration.toString());
-
 
         getServer().getPluginManager().registerEvents(new AnimalStartingWeightInitializer(configuration, utils, getLogger()), this);
         getServer().getPluginManager().registerEvents(new LootAdjusterForSlaughteredHusbandryAnimals(configuration, utils, getLogger()), this);

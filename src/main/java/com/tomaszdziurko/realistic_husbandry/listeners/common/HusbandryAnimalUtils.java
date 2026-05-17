@@ -4,7 +4,9 @@ import static org.bukkit.attribute.Attribute.MAX_HEALTH;
 import static org.bukkit.persistence.PersistentDataType.INTEGER;
 
 import com.tomaszdziurko.realistic_husbandry.RealisticHusbandryConfiguration;
+import java.util.List;
 import java.util.Objects;
+import java.util.logging.Logger;
 import org.bukkit.entity.AbstractCow;
 import org.bukkit.entity.AbstractHorse;
 import org.bukkit.entity.Breedable;
@@ -17,9 +19,11 @@ import org.bukkit.persistence.PersistentDataContainer;
 public class HusbandryAnimalUtils {
 
     private final RealisticHusbandryConfiguration configuration;
+    private final Logger logger;
 
-    public HusbandryAnimalUtils(RealisticHusbandryConfiguration configuration) {
+    public HusbandryAnimalUtils(RealisticHusbandryConfiguration configuration, Logger logger) {
         this.configuration = configuration;
+        this.logger = logger;
     }
 
     public int getWeight(Entity entity) {
@@ -50,8 +54,11 @@ public class HusbandryAnimalUtils {
 
     public void setWeight(Breedable entity, int weight) {
         PersistentDataContainer pdc = entity.getPersistentDataContainer();
-        if (weight >= configuration.getMaximumAllowedWeight() ) {
+        if (weight > configuration.getMaximumAllowedWeight() ) {
             weight = configuration.getMaximumAllowedWeight();
+        }
+        if (weight < configuration.getMinimumAllowedWeight() ) {
+            weight = configuration.getMinimumAllowedWeight();
         }
         if (entity.getAge() >= 0) {
             pdc.set(configuration.getWeightPropertyKey(), INTEGER, weight);
@@ -70,6 +77,16 @@ public class HusbandryAnimalUtils {
                 || Pig.class.isAssignableFrom(entityClass)
                 || Sheep.class.isAssignableFrom(entityClass)
                 ;
+    }
+
+    public int countHospitableAnimalsAround(Breedable animal) {
+        List<Entity> animalsNearBy = animal.getNearbyEntities(3, 1, 3)
+                .stream()
+                .filter(this::entitySupportsRealisticHusbandry)
+                .toList();
+//        String nearbyAnimals = String.join(",", animalsNearBy.stream().map(it -> it.getClass().getSimpleName()).toList());
+//        logger.info("Nearby animals (" + animalsNearBy.size() +"): " + nearbyAnimals);
+        return animalsNearBy.size();
     }
 
 }

@@ -35,9 +35,9 @@ public class AnimalGrowthSimulatingEngine {
         }
 
         double healthGrowthModifier = healthPercentage/100.0d;
-        double congestionGrowthModifier = congestionGrowthCalculator.calculateCongestionModifier(animal);
+        double congestionGrowthModifier = congestionGrowthCalculator.calculateCongestionModifier(animal, healthPercentage);
 
-        double weightModifier = 1 + configuration.getBaseGrowModifier() * healthGrowthModifier;
+        double weightModifier = 1 + configuration.getBaseGrowModifier() * healthGrowthModifier*congestionGrowthModifier;
         logger.info(format("Animal {0}:{1} weight modified by {2}",
                 animal.getClass().getSimpleName(),
                 animal.getEntityId(),

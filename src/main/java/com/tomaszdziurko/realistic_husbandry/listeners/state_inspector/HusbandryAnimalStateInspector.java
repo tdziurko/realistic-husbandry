@@ -3,6 +3,7 @@ package com.tomaszdziurko.realistic_husbandry.listeners.state_inspector;
 import com.tomaszdziurko.realistic_husbandry.RealisticHusbandryConfiguration;
 import com.tomaszdziurko.realistic_husbandry.listeners.common.AbstractRealisticHusbandryListener;
 import com.tomaszdziurko.realistic_husbandry.listeners.common.HusbandryAnimalUtils;
+import java.text.MessageFormat;
 import java.util.logging.Logger;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
@@ -28,9 +29,15 @@ public class HusbandryAnimalStateInspector extends AbstractRealisticHusbandryLis
         Entity clickedEntity = event.getRightClicked();
         if (getUtils().entitySupportsRealisticHusbandry(clickedEntity)) {
             int weight = getUtils().getWeight(clickedEntity);
-            String text = "Animal: " + clickedEntity.getClass().getSimpleName() + "(id: " + clickedEntity.getEntityId() +
-                    "), health: " + getUtils().percentageOfFullHealth((Breedable) clickedEntity) + "%, weight: " + weight;
-            event.getPlayer().spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(text));
+            int nearbyAnimals = getUtils().countHospitableAnimalsAround((Breedable)clickedEntity);
+            String animalDetails = MessageFormat.format("Animal: {0} (id: {1}), health: {2}%, weight: {3}, nearby animals: {4}",
+                    clickedEntity.getClass().getSimpleName(),
+                    clickedEntity.getEntityId(),
+                    getUtils().percentageOfFullHealth((Breedable) clickedEntity),
+                    weight,
+                    nearbyAnimals
+            );
+            event.getPlayer().spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(animalDetails));
         }
     }
 

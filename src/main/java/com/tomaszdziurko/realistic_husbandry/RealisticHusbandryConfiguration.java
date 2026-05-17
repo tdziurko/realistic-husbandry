@@ -6,6 +6,7 @@ public class RealisticHusbandryConfiguration {
 
     private final String pluginName;
     private final int initialAnimalWeight;
+    private final int minimumAllowedWeight;
     private final int maximumAllowedWeight;
     private final NamespacedKey weightPropertyKey;
     private final double baseGrowModifier;
@@ -14,9 +15,10 @@ public class RealisticHusbandryConfiguration {
     public RealisticHusbandryConfiguration() {
         this.pluginName = "RealisticHusbandry";
         this.initialAnimalWeight = 1000;
+        this.minimumAllowedWeight = 250;
         this.maximumAllowedWeight = 50000;
         this.weightPropertyKey = new NamespacedKey(pluginName.toLowerCase(), "weight");
-        this.baseGrowModifier = 0.3;
+        this.baseGrowModifier = 0.25;
     }
 
     public String getPluginName() {
@@ -25,6 +27,10 @@ public class RealisticHusbandryConfiguration {
 
     public int getInitialAnimalWeight() {
         return initialAnimalWeight;
+    }
+
+    public int getMinimumAllowedWeight() {
+        return minimumAllowedWeight;
     }
 
     public int getMaximumAllowedWeight() {
