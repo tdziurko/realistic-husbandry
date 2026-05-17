@@ -71,8 +71,8 @@ Plugin idea taken from discussion on Reddit - [Animal Weights](https://www.reddi
 
 To use RealisticHusbandry plugin on your server, download it from:
 
-* [SpigotMC](https://www.spigotmc.org/)
-* [Modrinth](https://modrinth.com/)
+* [SpigotMC](https://www.spigotmc.org/resources/realistichusbandry.135336/)
+* [Modrinth](https://modrinth.com/plugin/realistichusbandry/)
 
 ### Installation
 
