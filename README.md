@@ -56,6 +56,7 @@ and calculates their growth rate based on several conditions.
 * (coming soon!) give them space: too crowded pastures prevent animals from being happy and growing
 * (coming soon!) provide them with water: animals with direct access to water grow faster
 * (coming soon!) give them food: animals with direct access to hay grow faster
+* (coming soon!) animals on grass are happier and grow faster
 
 Also planned:
 * adjust number of eggs, wool and milk based on animals happiness and weight
