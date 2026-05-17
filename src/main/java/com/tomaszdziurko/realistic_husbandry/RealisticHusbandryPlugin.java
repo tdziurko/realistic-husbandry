@@ -1,0 +1,46 @@
+package com.tomaszdziurko.realistic_husbandry;
+
+import com.tomaszdziurko.realistic_husbandry.day_cycle.NewDayEventPublisher;
+import com.tomaszdziurko.realistic_husbandry.listeners.AnimalStartingWeightInitializer;
+import com.tomaszdziurko.realistic_husbandry.listeners.common.HusbandryAnimalUtils;
+import com.tomaszdziurko.realistic_husbandry.listeners.state_inspector.HusbandryAnimalStateInspector;
+import com.tomaszdziurko.realistic_husbandry.listeners.growth.DailyGrowthAnimalSimulator;
+import com.tomaszdziurko.realistic_husbandry.listeners.looting.LootAdjusterForSlaughteredHusbandryAnimals;
+import java.util.List;
+import org.bukkit.Bukkit;
+import org.bukkit.World;
+import org.bukkit.plugin.java.JavaPlugin;
+
+public class RealisticHusbandryPlugin extends JavaPlugin {
+
+    private RealisticHusbandryConfiguration configuration;
+    private HusbandryAnimalUtils utils;
+
+    @Override
+    public void onEnable() {
+        configuration = new RealisticHusbandryConfiguration();
+        utils = new HusbandryAnimalUtils(configuration);
+        getLogger().info("Configuration values: " + configuration.toString());
+
+
+        getServer().getPluginManager().registerEvents(new AnimalStartingWeightInitializer(configuration, utils, getLogger()), this);
+        getServer().getPluginManager().registerEvents(new LootAdjusterForSlaughteredHusbandryAnimals(configuration, utils, getLogger()), this);
+        getServer().getPluginManager().registerEvents(new DailyGrowthAnimalSimulator(configuration, utils, getLogger()), this);
+        getServer().getPluginManager().registerEvents(new HusbandryAnimalStateInspector(configuration, utils, getLogger()), this);
+
+        registerDayCycleEventPublisher();
+    }
+
+    private void registerDayCycleEventPublisher() {
+        List<World> worlds = Bukkit.getWorlds();
+        for (World world : worlds) {
+            new NewDayEventPublisher(world, this).runTaskTimer(this, 0L, 20L);
+        }
+    }
+
+    @Override
+    public void onDisable() {
+
+    }
+
+}

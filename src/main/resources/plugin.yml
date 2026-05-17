@@ -1,0 +1,8 @@
+name: RealisticHusbandry
+version: 0.1.0
+author: Tomasz Dziurko
+
+main: com.tomaszdziurko.realistic_husbandry.RealisticHusbandryPlugin
+api-version: '1.21'
+
+description: Plugin that rewards providing good conditions to your animals. The better conditions are, the more items you get from them!
