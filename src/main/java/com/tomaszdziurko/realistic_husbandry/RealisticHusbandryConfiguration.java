@@ -39,4 +39,16 @@ public class RealisticHusbandryConfiguration {
         return baseGrowModifier;
     }
 
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer("RealisticHusbandryConfiguration{");
+        sb.append("pluginName='").append(pluginName).append('\'');
+        sb.append(", initialAnimalWeight=").append(initialAnimalWeight);
+        sb.append(", maximumAllowedWeight=").append(maximumAllowedWeight);
+        sb.append(", weightPropertyKey=").append(weightPropertyKey);
+        sb.append(", baseGrowModifier=").append(baseGrowModifier);
+        sb.append('}');
+        return sb.toString();
+    }
+
 }
