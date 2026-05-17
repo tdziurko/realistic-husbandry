@@ -26,7 +26,7 @@ public class HusbandryAnimalStateInspector extends AbstractRealisticHusbandryLis
         }
 
         Entity clickedEntity = event.getRightClicked();
-        if (entitySupportsRealisticHusbandry(clickedEntity)) {
+        if (getUtils().entitySupportsRealisticHusbandry(clickedEntity)) {
             int weight = getUtils().getWeight(clickedEntity);
             String text = "Animal: " + clickedEntity.getClass().getSimpleName() + "(id: " + clickedEntity.getEntityId() +
                     "), health: " + getUtils().percentageOfFullHealth((Breedable) clickedEntity) + "%, weight: " + weight;

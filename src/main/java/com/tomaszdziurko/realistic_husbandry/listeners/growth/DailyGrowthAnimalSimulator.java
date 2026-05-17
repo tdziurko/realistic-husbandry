@@ -27,7 +27,7 @@ public class DailyGrowthAnimalSimulator extends AbstractRealisticHusbandryListen
         Collection<Entity> breedableAnimals = event.getWorld().getEntitiesByClasses(Breedable.class);
         List<Entity> animalsToAdjustWeight = breedableAnimals
                 .stream()
-                .filter(this::entitySupportsRealisticHusbandry)
+                .filter(entity1 -> getUtils().entitySupportsRealisticHusbandry(entity1))
                 .toList();
 
         animalsToAdjustWeight.forEach(

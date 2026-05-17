@@ -12,11 +12,13 @@ public class AnimalGrowthSimulatingEngine {
     private final RealisticHusbandryConfiguration configuration;
     private final HusbandryAnimalUtils utils;
     private final Logger logger;
+    private final CongestionGrowthCalculator congestionGrowthCalculator;
 
     public AnimalGrowthSimulatingEngine(RealisticHusbandryConfiguration configuration, HusbandryAnimalUtils utils, Logger logger) {
         this.configuration = configuration;
         this.utils = utils;
         this.logger = logger;
+        this.congestionGrowthCalculator = new CongestionGrowthCalculator(configuration, utils, logger);
     }
 
     public void growAnimal(Breedable animal) {
@@ -33,6 +35,7 @@ public class AnimalGrowthSimulatingEngine {
         }
 
         double healthGrowthModifier = healthPercentage/100.0d;
+        double congestionGrowthModifier = congestionGrowthCalculator.calculateCongestionModifier(animal);
 
         double weightModifier = 1 + configuration.getBaseGrowModifier() * healthGrowthModifier;
         logger.info(format("Animal {0}:{1} weight modified by {2}",

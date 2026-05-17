@@ -5,8 +5,13 @@ import static org.bukkit.persistence.PersistentDataType.INTEGER;
 
 import com.tomaszdziurko.realistic_husbandry.RealisticHusbandryConfiguration;
 import java.util.Objects;
+import org.bukkit.entity.AbstractCow;
+import org.bukkit.entity.AbstractHorse;
 import org.bukkit.entity.Breedable;
+import org.bukkit.entity.Chicken;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.Pig;
+import org.bukkit.entity.Sheep;
 import org.bukkit.persistence.PersistentDataContainer;
 
 public class HusbandryAnimalUtils {
@@ -51,6 +56,20 @@ public class HusbandryAnimalUtils {
         if (entity.getAge() >= 0) {
             pdc.set(configuration.getWeightPropertyKey(), INTEGER, weight);
         }
+    }
+
+    public boolean entitySupportsRealisticHusbandry(Entity entity) {
+        if (!(entity instanceof Breedable)) {
+            return false;
+        }
+
+        Class<? extends Entity> entityClass = entity.getClass();
+        return AbstractCow.class.isAssignableFrom(entityClass)
+                || AbstractHorse.class.isAssignableFrom(entityClass)
+                || Chicken.class.isAssignableFrom(entityClass)
+                || Pig.class.isAssignableFrom(entityClass)
+                || Sheep.class.isAssignableFrom(entityClass)
+                ;
     }
 
 }

@@ -24,7 +24,8 @@ public class AnimalStartingWeightInitializer extends AbstractRealisticHusbandryL
 
     @EventHandler
     public void initializeWeightForBreededAnimals(EntityBreedEvent event) {
-        if (!entitySupportsRealisticHusbandry(event.getEntity())) {
+        Entity entity = event.getEntity();
+        if (!getUtils().entitySupportsRealisticHusbandry(entity)) {
             return;
         }
         getUtils().setInitialWeight((Breedable)event.getEntity());
@@ -32,7 +33,8 @@ public class AnimalStartingWeightInitializer extends AbstractRealisticHusbandryL
 
     @EventHandler
     public void initializeWeightForSpawnedAnimals(CreatureSpawnEvent event) {
-        if (!entitySupportsRealisticHusbandry(event.getEntity())) {
+        Entity entity = event.getEntity();
+        if (!getUtils().entitySupportsRealisticHusbandry(entity)) {
             return;
         }
         getUtils().setInitialWeight((Breedable)event.getEntity());
@@ -40,7 +42,8 @@ public class AnimalStartingWeightInitializer extends AbstractRealisticHusbandryL
 
     @EventHandler
     public void initializeWeightForMushroomCows(EntityTransformEvent event) {
-        if (!entitySupportsRealisticHusbandry(event.getTransformedEntity())) {
+        Entity entity = event.getTransformedEntity();
+        if (!getUtils().entitySupportsRealisticHusbandry(entity)) {
             return;
         }
         getUtils().setInitialWeight((Breedable)event.getTransformedEntity());
@@ -53,7 +56,7 @@ public class AnimalStartingWeightInitializer extends AbstractRealisticHusbandryL
         int entitiesCounter = event.getChunk().getEntities().length;
 
         for (Entity entity : event.getChunk().getEntities()) {
-            if (entitySupportsRealisticHusbandry(entity)) {
+            if (getUtils().entitySupportsRealisticHusbandry(entity)) {
                 adjustedAnimalsCounter++;
                 getUtils().setInitialWeight((Breedable)entity);
             }
