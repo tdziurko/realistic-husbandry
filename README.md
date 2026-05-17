@@ -61,6 +61,10 @@ Also planned:
 * adjust number of eggs, wool and milk based on animals happiness and weight
 * animals that are too old do not provide products at all
 
+**Credits**
+
+Plugin idea taken from discussion on Reddit - [Animal Weights](https://www.reddit.com/r/Minecraft/comments/1te0m69/animal_weights_a_simple_mechanic_to_encourage/)
+
 <!-- GETTING STARTED -->
 ### Using the plugin
 
