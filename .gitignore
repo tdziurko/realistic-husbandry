@@ -58,3 +58,4 @@ build/
 
 ### Skip file that sends plugin to my test server
 /uploadPlugin.sh
+/dependency-reduced-pom.xml
