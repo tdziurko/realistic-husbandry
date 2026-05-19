@@ -14,7 +14,9 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class RealisticHusbandryPlugin extends JavaPlugin {
 
-    public static final int BSTATS_PLUGIN_ID = 31425;
+    private static final int BSTATS_PLUGIN_ID = 31425;
+    private static final String SPIGOT_RESOURCE_ID = "135336";
+
     private RealisticHusbandryConfiguration configuration;
     private HusbandryAnimalUtils utils;
 
@@ -31,6 +33,7 @@ public class RealisticHusbandryPlugin extends JavaPlugin {
 
         registerDayCycleEventPublisher();
         registerBstatsMetrics();
+        new UpdateChecker(this, SPIGOT_RESOURCE_ID).checkForNewerVersion();
     }
 
     private void registerDayCycleEventPublisher() {

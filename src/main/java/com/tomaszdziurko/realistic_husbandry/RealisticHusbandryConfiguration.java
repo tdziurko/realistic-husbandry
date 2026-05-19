@@ -11,7 +11,6 @@ public class RealisticHusbandryConfiguration {
     private final NamespacedKey weightPropertyKey;
     private final double baseGrowModifier;
 
-
     public RealisticHusbandryConfiguration() {
         this.pluginName = "RealisticHusbandry";
         this.initialAnimalWeight = 1000;
