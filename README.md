@@ -33,7 +33,7 @@
 
   <p align="center">
     <!-- TODO: project_description -->
-    Plugin for Minecraft (Spigot/Paper) that rewards providing good conditions to your animals. The better conditions are, the more items you get from them!
+    Plugin for Minecraft (Spigot/Paper) that rewards providing good conditions to your animals. The better conditions are, the more items and XP you get from them!
     <br />
     <br />
     <a href="https://github.com/tdziurko/realistic-husbandry/issues/new?labels=Bug&template=bug_report.md&title=%5BBUG%5D+Some+bug+that+happend">Report bug</a>
@@ -49,12 +49,13 @@
 <img src="images/banner.png" alt="Realistic Husbandry"/>
 
 Animals living in good conditions are happier and gain weight faster. The happier (and the heavier) they are, 
-the more loot they give when you kill them. Neglect their conditions and they even may loose weight and stop giving you any loot!
+the more loot and XP they give when you kill them. Neglect their conditions and they even may loose weight and stop giving you any loot!
 Every morning server analyzes conditions your animals are living and calculates their growth rate (positive or negative) based on several conditions. 
 
 * keep them healthy: animals with health lower than 60% do not grow at all, the closer their health is to 100%, the faster their growth is 
 * give them space: too crowded pastures prevent animals from being happy and growing
 * avoid unhealthy conditions, as animals may loose weight and even do not drop anything when they are too thin 
+* get more xp for animals in better condition
 * check state of animal by right-clicking on it
 * (coming soon!) provide them with water: animals with direct access to water grow faster
 * (coming soon!) give them food: animals with direct access to hay grow faster
@@ -72,6 +73,12 @@ Also planned:
 Plugin idea taken from discussion on Reddit - [Animal Weights](https://www.reddit.com/r/Minecraft/comments/1te0m69/animal_weights_a_simple_mechanic_to_encourage/)
 
 ### Changelog
+
+**v0.4.0 (19th May 2026)**
+
+* amount of XP for killed animal now depends on its condition 
+* added integration with [bStats](https://bstats.org/plugin/bukkit/RealisticHusbandry/31425)
+* plugin now checks if newer version is available and display a message in the server log
 
 **v0.3.0 (17th May 2026)**
 
