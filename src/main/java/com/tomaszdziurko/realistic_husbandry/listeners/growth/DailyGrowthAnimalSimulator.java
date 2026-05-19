@@ -35,7 +35,11 @@ public class DailyGrowthAnimalSimulator extends AbstractRealisticHusbandryListen
         );
 
         long end = System.currentTimeMillis();
-        getLogger().info("Adjusting weight for " + animalsToAdjustWeight.size() + " animals took " + (end-start) + "ms");
+        long executionTime = end - start;
+
+        if (executionTime >= 250) {
+            getLogger().info("Adjusting weight on new day for " + animalsToAdjustWeight.size() + " animals took " + executionTime + "ms");
+        }
     }
 
 }
