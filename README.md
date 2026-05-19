@@ -25,6 +25,9 @@
 [![Issues][issues-shield]][issues-url]
 [![GPLv3 License][license-shield]][license-url]
 
+[![spigotDownloadsImg]][spigot]
+[![spigotRatingImg]][spigot]
+
 
 
 <p align="center">
@@ -33,7 +36,8 @@
 
   <p align="center">
     <!-- TODO: project_description -->
-    Plugin for Minecraft (Spigot/Paper) that rewards providing good conditions to your animals. The better conditions are, the more items and XP you get from them!
+    Animals raised in good conditions, grow faster and give you more loot and XP. Heavy penalty for keeping animals in crowded 
+    pastures discourage players from keeping hundreds of animals in small areas that cause lags on your server.
     <br />
     <br />
     <a href="https://github.com/tdziurko/realistic-husbandry/issues/new?labels=Bug&template=bug_report.md&title=%5BBUG%5D+Some+bug+that+happend">Report bug</a>
@@ -48,25 +52,26 @@
 
 <img src="images/banner.png" alt="Realistic Husbandry"/>
 
-Animals living in good conditions are happier and gain weight faster. The happier (and the heavier) they are, 
-the more loot and XP they give when you kill them. Neglect their conditions and they even may loose weight and stop giving you any loot!
-Every morning server analyzes conditions your animals are living and calculates their growth rate (positive or negative) based on several conditions. 
+Animals living in good conditions are happier and gain weight faster. Ones kept in congested space grow slower or even loose weight. 
+Weight directly correlates with the amount of loot and XP you get from killing cows/pigs/etc. 
 
-* keep them healthy: animals with health lower than 60% do not grow at all, the closer their health is to 100%, the faster their growth is 
-* give them space: too crowded pastures prevent animals from being happy and growing
-* avoid unhealthy conditions, as animals may loose weight and even do not drop anything when they are too thin 
-* get more xp for animals in better condition
-* check state of animal by right-clicking on it
-* (coming soon!) provide them with water: animals with direct access to water grow faster
-* (coming soon!) give them food: animals with direct access to hay grow faster
-* (coming soon!) animals on grass are happier and grow faster
+Every morning plugin calculates conditions that influence weight change (up or down) of each animal:
 
-Also planned:
+* healthy animals grow faster: health <=60% stops any growth, the closer their health is to 100%, the faster their growth is
+* lack of space around animal means they live in too crowded area. Reach maximum growth when less than 5 animals are within 3-block radius. 
+* keep animals in too congested pasture and they even may loose weight. Negative effect starts when more than 8 animals exist within 3-block radius.
+* when animal is both unhealthy and lives in crowded space, negative effect is even stronger
+* too thin animals do not drop any loot nor XP
+* you can check condition of animal by right-clicking on it
 
+**Coming soon:**
+
+* animals with access to water grow faster
+* animals with direct access to hay (or other type of food) grow faster
+* animals living on grass area grow faster
 * adjust number of eggs, wool and milk based on animals happiness and weight
 * animals that are too old do not provide products at all
-* increase growth rate when farmer villager is near by
-
+* increase growth rate when farmer villager is nearby
 
 **Credits**
 
@@ -136,7 +141,6 @@ To do that please:
 
 Distributed under the GPLv3 License. See `LICENSE` for more information.
 
-
 <!-- CONTACT -->
 ### Contact
 
@@ -155,3 +159,6 @@ Project Link: [https://github.com/tdziurko/realistic-husbandry](https://github.c
 [issues-url]: https://github.com/tdziurko/realistic-husbandry/issues
 [license-shield]: https://img.shields.io/github/license/tdziurko/realistic-husbandry.svg?style=flat-square
 [license-url]: https://github.com/tdziurko/realistic-husbandry/blob/main/LICENSE
+[spigot]: https://www.spigotmc.org/resources/realistichusbandry.135336/
+[spigotRatingImg]: https://img.shields.io/spiget/rating/135336.svg
+[spigotDownloadsImg]: https://img.shields.io/spiget/downloads/135336.svg?label=downloads%20%28spigot%29
