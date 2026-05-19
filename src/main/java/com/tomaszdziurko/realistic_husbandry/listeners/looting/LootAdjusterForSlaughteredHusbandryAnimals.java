@@ -22,12 +22,14 @@ public class LootAdjusterForSlaughteredHusbandryAnimals extends AbstractRealisti
 
             int weight = getUtils().getWeight(event.getEntity());
             if (weight >= getConfig().getInitialAnimalWeight()) {
+                double dropAndExpMultiplier = (double) weight /getConfig().getInitialAnimalWeight();
                 for (ItemStack drop : event.getDrops()) {
-                    double dropMultiplied = (double) weight /getConfig().getInitialAnimalWeight();
-                    drop.setAmount((int) (drop.getAmount() * dropMultiplied));
+                    drop.setAmount((int) (drop.getAmount() * dropAndExpMultiplier));
                 }
+                event.setDroppedExp((int) (event.getDroppedExp()*dropAndExpMultiplier));
             } else {
                 event.getDrops().clear();
+                event.setDroppedExp(0);
             }
         }
     }
